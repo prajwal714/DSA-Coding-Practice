@@ -96,10 +96,13 @@ int main()
 		
 		
 	}
-	cout<<"ID\t|arrival time|Burst time|Completion Time|Turnaround time|Waiting time|response time"<<endl;
+	double avgWaiting=0.0;
 	for(i=0;i<n;i++)
 	{
+		avgWaiting+=t[i].ct-t[i].at-t[i].bt;
 		cout<<"\t"<<i<<"|\t"<<t[i].at<<"\t|\t"<<t[i].bt<<"\t|\t"<<t[i].ct<<"\t|\t"<<t[i].ct-t[i].at<<"\t|\t"<<t[i].ct-t[i].at-t[i].bt<<endl;
 	}
+	
+	cout<<"Avg waiting time : "<<avgWaiting/n;
 	return 0;
 }
