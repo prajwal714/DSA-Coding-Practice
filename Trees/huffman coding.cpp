@@ -43,6 +43,25 @@ void encode(node *root,string str,unordered_map<char,string> &huffmanCode)
 	encode(root->right, str + "1", huffmanCode);
 }
 
+void decode(node* root, int index, string s)
+{
+	if(root==NULL)
+	return;
+	
+	if(!root->left&&!root->right)
+	{
+		
+		cout<<"Decoded: "<<root->ch<<endl;
+	}
+	
+	index++;
+	
+	if(s[index]=='0')
+	decode(root->left,index,s);
+	else
+	decode(root->right,index,s);
+}
+
 int main()
 {
 	int n;
@@ -95,6 +114,6 @@ int main()
 		cout << pair.first << " " << pair.second << '\n';
 	}
 	
-	
+	decode(root,-1,"111");
 	return 0;
 }
