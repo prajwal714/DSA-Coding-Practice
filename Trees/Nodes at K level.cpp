@@ -27,8 +27,7 @@ int main()
 {
   int t;
   struct Node *child;
-  scanf("%d
-", &t);
+  scanf("%d", &t);
   while (t--)
   {
      map<int, Node*> m;
