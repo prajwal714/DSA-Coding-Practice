@@ -15,7 +15,7 @@ int main() {
 	{
 		count+=__builtin_popcount(i);
 	}
-	cout<<count<<endl;
+	cout<<count<<endl;    
 
 	}
 }
