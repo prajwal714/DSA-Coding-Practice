@@ -25,7 +25,7 @@ public:
             solve(open-1, close, op1, res);
             
         }
-        
+        //we can add a closing ( only when close>open, otherwise it will become a invalid string
         if(close>open)
         {
             string op2=op;
