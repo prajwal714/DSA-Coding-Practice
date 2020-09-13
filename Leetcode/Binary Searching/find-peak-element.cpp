@@ -5,21 +5,17 @@ public:
         int n=nums.size();
         int low=0,high=n-1;
         
-        int res;
         while(low<high)
         {
-            int mid=(low+high)/2;
+            int mid=low+(high-low)/2;
             
-           if(nums[mid]>nums[mid+1])
-           {
-               high=mid;
-           }
-            else
-            {
+            if(nums[mid]<nums[mid+1])
                 low=mid+1;
-            }
+            else
+                high=mid;
         }
-        return low;
+        
+        return high;
         
     }
     
