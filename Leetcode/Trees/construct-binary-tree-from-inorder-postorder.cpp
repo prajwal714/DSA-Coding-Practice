@@ -11,17 +11,22 @@
  */
 class Solution {
 public:
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
         
-        return buildTree(preorder, inorder, 0, 0, inorder.size()-1);
+        return buildTree(inorder, postorder, inorder.size()-1, 0, inorder.size()-1);
+        
     }
     
-    TreeNode* buildTree(vector<int> &preorder, vector<int>&inorder, int pos, int in_start, int in_end)
+    TreeNode* buildTree(vector<int>&inorder, vector<int> &postorder, int pos, int in_start, int in_end)
     {
         if(in_start>in_end)
             return NULL;
         
-        TreeNode* root=new TreeNode(preorder[pos]);
+        if(in_start==in_end)
+            return new TreeNode(postorder[pos]);
+        
+        TreeNode* root=new TreeNode(postorder[pos]);
+        
         int in_pos;
         for(int i=in_start;i<=in_end;i++)
         {
@@ -30,15 +35,14 @@ public:
                 in_pos=i;
                 break;
             }
+                
         }
+        root->right=buildTree(inorder, postorder, pos-1, in_pos+1, in_end);
         
-        int left_nodes=in_pos-in_start+1;
+        int right_nodes=in_end-in_pos+1;
         
-        root->left=buildTree(preorder, inorder, pos+1, in_start, in_pos-1);
-        root->right=buildTree(preorder, inorder, pos+left_nodes, in_pos+1, in_end);
+        root->left=buildTree(inorder, postorder, pos-right_nodes, in_start, in_pos-1);
         
         return root;
-        
-        
     }
 };

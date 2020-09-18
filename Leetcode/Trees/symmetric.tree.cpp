@@ -13,18 +13,23 @@ class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
         
-      return helper(root,root);
-        
-        
+        return helper(root,root);
     }
     
-    bool helper(TreeNode* root1,TreeNode* root2)
+    bool helper(TreeNode* root1, TreeNode* root2)
     {
         if(root1==NULL && root2==NULL)
             return true;
+        
         if(root1==NULL || root2==NULL)
             return false;
         
-        return (root1->val==root2->val)&&helper(root1->left, root2->right)&&helper(root1->right, root2->left);
+        bool left=helper(root1->left, root2->right); //check if left subtree of root1 == rght subtree of root2
+        bool right=helper(root1->right, root2->left); //check if right subtree of root1 == left subtree of root2
+        
+        bool current=(root1->val==root2->val);
+        
+        return current && left && right;
+            
     }
 };
