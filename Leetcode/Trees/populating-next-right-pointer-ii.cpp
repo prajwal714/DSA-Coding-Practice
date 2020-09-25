@@ -25,8 +25,8 @@ public:
         if(root==NULL)
             return root;
         
-        Node* parent=root;
-        Node* childHead=NULL, *child=NULL;
+        Node* parent=root; //here we use 3 pointers, prent points to the current level parent
+        Node* childHead=NULL, *child=NULL; //childHead points to the first node of next level, child points to the children of each parent in current node iteratively
         
         while(parent!=NULL) //traverses each level by level untill parent becomes null by reaching the last level
         {
