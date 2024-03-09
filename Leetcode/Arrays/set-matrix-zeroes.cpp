@@ -1,3 +1,13 @@
+/*
+Here we use seperate variables for setting if first row and first col should be 0, otherwise
+
+
+
+time complexity: O(m*n)
+space complexity: O(1)
+
+*/
+
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
